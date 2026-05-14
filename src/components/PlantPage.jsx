@@ -34,8 +34,8 @@ function PlantPage() {
   return (
     <main>
       <NewPlantForm onAddPlant={(plant) => setPlants((prevPlants) => [...prevPlants, plant])} />
-      <Search />
-      <PlantList {...displayedPlants}/>
+      <Search onSearch={setSearchProduct} />
+      <PlantList {...displayedPlants} />
     </main>
   );
 }
