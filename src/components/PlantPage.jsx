@@ -28,7 +28,7 @@ function PlantPage() {
   if (error) return <h1>Error: {error}</h1>;
   return (
     <main>
-      <NewPlantForm />
+      <NewPlantForm onAddPlant={(plant) => setPlants((prevPlants) => [...prevPlants, plant])} />
       <Search />
       <PlantList plants={plants}/>
     </main>
