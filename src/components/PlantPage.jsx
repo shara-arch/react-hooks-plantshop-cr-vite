@@ -29,13 +29,14 @@ function PlantPage() {
       setLoading(false);
     })
   },[])
-  if (isLoading) return <h1>Loading...</h1>;
+
   if (error) return <h1>Error: {error}</h1>;
+
   return (
     <main>
       <NewPlantForm onAddPlant={(plant) => setPlants((prevPlants) => [...prevPlants, plant])} />
       <Search onSearch={setSearchProduct} />
-      <PlantList {...displayedPlants} />
+      {isLoading ? <h1>Loading...</h1> : <PlantList plants={displayedPlants} />}
     </main>
   );
 }
