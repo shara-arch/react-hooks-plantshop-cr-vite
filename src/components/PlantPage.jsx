@@ -8,6 +8,11 @@ function PlantPage() {
   const [plants, setPlants] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchProduct, setSearchProduct] = useState("");
+
+  //Variable to hold filtered list
+  const displayedPlants = plants.filter((plant) => 
+  plant.name.toLowerCase().includes(searchProduct.toLowerCase()))
 
   useEffect(() => {
     fetch("http://localhost:6001/plants")
@@ -30,7 +35,7 @@ function PlantPage() {
     <main>
       <NewPlantForm onAddPlant={(plant) => setPlants((prevPlants) => [...prevPlants, plant])} />
       <Search />
-      <PlantList plants={plants}/>
+      <PlantList {...displayedPlants}/>
     </main>
   );
 }
